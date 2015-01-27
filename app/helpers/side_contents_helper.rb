@@ -1,0 +1,2 @@
+module SideContentsHelper
+end
