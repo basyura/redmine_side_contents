@@ -1,7 +1,7 @@
 
 <%= form_tag side_contents_save_path, remote: true  do |f| %>
 
-  <%= hidden_field_tag(:project_id, @project_id) %>
+  <%= hidden_field_tag(:project_id, @project.id) %>
 
   <div>
     <h2>共通</h2>
