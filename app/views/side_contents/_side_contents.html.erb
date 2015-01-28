@@ -1,0 +1,12 @@
+<div id="side_contents">
+  <div>
+    <div style="float:right;color:#888;margin-right:10px;">
+      <%= link_to("編集", {:controller => 'side_contents', :action => 'edit', :project_id => @project.id }, :remote => true, :method => 'get') %>
+    </div>
+    <h3>SideContents</h3>
+    <div>
+      <%= textilizable(@common_text,  object: @project) %>
+      <%= textilizable(@project_text, object: @project) %>
+    </div>
+  </div>
+</div>
