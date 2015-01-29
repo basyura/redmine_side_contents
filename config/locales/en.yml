@@ -1,3 +1,6 @@
 # English strings go here for Rails i18n
 en:
-  # my_label: "My label"
+  side_contents_label_edit: 'edit'
+  side_contents_label_project: 'project'
+  side_contents_label_common: 'common'
+  side_contents_label_submit: 'save'
