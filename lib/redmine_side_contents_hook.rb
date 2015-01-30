@@ -6,6 +6,7 @@ class RedmineSideContentsHook < Redmine::Hook::ViewListener
     return unless User.current.logged?
     return unless context[:project]
 
+    @host = context[:request].scheme + '://' + context[:request].host_with_port
     @project = context[:project]
     @common_text  = SideContent.find_text(0)
     @project_text = SideContent.find_text(context[:project].id)

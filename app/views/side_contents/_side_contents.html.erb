@@ -1,7 +1,7 @@
 <div id="side_contents">
   <div>
     <div style="float:right;color:#888;margin-right:10px;">
-      <%= link_to(l(:side_contents_label_edit), {:controller => 'side_contents', :action => 'edit', :project_id => @project.id }, :remote => true, :method => 'get') %>
+      <%= link_to(l(:side_contents_label_edit), "#{@host}/side_contents_edit?project_id=#{@project.id}", :remote => true, :method => 'get') %>
     </div>
     <h3>SideContents</h3>
     <div>

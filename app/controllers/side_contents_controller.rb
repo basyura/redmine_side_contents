@@ -12,6 +12,7 @@ class SideContentsController < ApplicationController
 
   private
   def render_view
+    @host         = request.scheme + '://' + request.host_with_port
     @project      = Project.find(params[:project_id])
     @common_text  = SideContent.find_text(0)
     @project_text = SideContent.find_text(params[:project_id])
