@@ -6,12 +6,16 @@ class RedmineSideContentsHook < Redmine::Hook::ViewListener
     return unless User.current.logged?
     return unless context[:project]
 
+    url = ''
+    url << config.relative_url_root if config.relative_url_root
+    url << '/side_contents_get'
+
     script =<<-EOF
       <script type="text/javascript">
       //<![CDATA[
       $(document).ready(function() {
         $.ajax({
-            url: "#{config.relative_url_root + '/side_contents_get'}",
+            url: "#{url}",
             type: "GET",
             data: { project_id: #{context[:project].id} },
             dataType: "html",
