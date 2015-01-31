@@ -7,20 +7,29 @@ class RedmineSideContentsHook < Redmine::Hook::ViewListener
     return unless context[:project]
 
     script =<<-EOF
-    <script>
+      <script type="text/javascript">
+      //<![CDATA[
       $(document).ready(function() {
         $.ajax({
             url: "#{config.relative_url_root + '/side_contents_get'}",
             type: "GET",
             data: { project_id: #{context[:project].id} },
             dataType: "html",
+            beforeSend: function(data) {
+              $('#ajax-indicator').attr('id', 'side_contents_ajax-indicator');
+            },
             success: function(data) {
-              $('#side_contents_container').html(data)
+              $('#side_contents_container').html(data);
             },
             error: function(data) {
+              $('#side_contents_container').html('error');
+            },
+            complete: function(data) {
+              $('#side_contents_ajax-indicator').attr('id', 'ajax-indicator');
             }
         });
       });
+      //]]>
       </script>
       <div id='side_contents_container' >
       </div>
