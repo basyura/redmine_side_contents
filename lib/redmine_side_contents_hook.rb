@@ -2,18 +2,30 @@
 class RedmineSideContentsHook < Redmine::Hook::ViewListener
   include ActionView
   def view_layouts_base_sidebar(context = {})
-    
+
     return unless User.current.logged?
     return unless context[:project]
 
-    @host = context[:request].scheme + '://' + context[:request].host_with_port
-    @project = context[:project]
-    @common_text  = SideContent.find_text(0)
-    @project_text = SideContent.find_text(context[:project].id)
+    script =<<-EOF
+    <script>
+      $(document).ready(function() {
+        $.ajax({
+            url: "#{config.relative_url_root + '/side_contents_get'}",
+            type: "GET",
+            data: { project_id: #{context[:project].id} },
+            dataType: "html",
+            success: function(data) {
+              $('#side_contents_container').html(data)
+            },
+            error: function(data) {
+            }
+        });
+      });
+      </script>
+      <div id='side_contents_container' >
+      </div>
+    EOF
 
-    path = ActionController::Base.view_paths.to_a.find {|v| v.to_s =~ /redmine_side_contents/ }
-    path = File.join(path, 'side_contents', '_side_contents.html.erb')
-
-    ERB.new(open(path, &:read)).result(binding)
+    script.html_safe
   end
 end
