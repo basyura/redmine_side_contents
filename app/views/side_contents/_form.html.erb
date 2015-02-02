@@ -13,8 +13,9 @@
     <%= text_area_tag(:project_text, @project_text, style: 'width:100%;height:200px') %>
   </div>
 
-  <div style="margin-top:10px;">
+  <div style="margin-top:10px;margin-right:-10px;" align="right">
     <%= submit_tag l(:side_contents_label_submit) %>
+    <%= submit_tag l(:side_contents_label_cancel, :name => nil, :onclick => "hideModal(this);", :type => 'button') %>
   </div>
 
 <% end %> 
