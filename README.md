@@ -1,7 +1,7 @@
 # redmine side contents
 
-This is a editable sidebar plugin for Redmine.
-Freely you can write wiki for youself.
+This is a editable sidebar plugin for Redmine.  
+Freely you can write wiki for yourself.
 
 ## Images
 
