@@ -1,3 +1,0 @@
-= redmine_side_contents
-
-This is a editable sidebar plugin for Redmine.
