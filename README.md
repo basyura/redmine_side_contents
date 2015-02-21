@@ -13,6 +13,13 @@ Edit Form
 
 ![form](https://raw.githubusercontent.com/basyura/redmine_side_contents/master/images/form.png) 
 
+## Install
+
+```
+cd $REDMINE_ROOT/plugins
+git clone https://github.com/basyura/redmine_side_contents.git
+rake redmine:plugins
+```
 
 ## License
 
